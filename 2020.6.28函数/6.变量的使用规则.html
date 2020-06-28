@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var test = '全局变量';
+        function foo(){
+            var a = 0;   //不会销毁；因为bar函数体中还需要使用
+            var c = 'ccc'; //销毁 没用了
+            console.log(a);
+            return function bar(){
+                var b = 'b';
+                ++a;
+                console.log(a)
+            } 
+        }
+      var bar =  foo();
+
+
+    //变量的使用规则
+    //在自己的作用域下找 var  声明的变量
+    //  如果没有 去上一层作用域中找。直到找到全局的作用域为止。如果一直都没有那么报错
+    // 在中间任何一个作用域中找到了；那么使用的就是那一层的变量
+
+        //只有var 是声明变量；其他一律都是使用变量
+        // 使用变量；直接用值；重新赋值
+
+        // 因为 所有作用域中 var 声明的变量都会提升到 当前的作用域的最顶端。赋值不提升
+       //undefined 变量已声明；未赋值； is not defined 变量未声明
+    </script>
+</body>
+</html>
