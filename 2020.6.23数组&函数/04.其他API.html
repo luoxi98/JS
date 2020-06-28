@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 反常规思路
+        var arr = [1,2,3,4]
+        var arr1 = ['2','da']
+        var res = ['s','s'];
+        // concat()作用：合并数组并且返回合并后结构
+        // 需求：将以上arr arr1 res数组全部合并到arr
+       arr =  arr.concat(arr1)
+       arr = arr.concat(res)
+       console.log(arr)
+
+
+
+
+    //  arr.reverse()  颠倒数组
+    var reverseArr = arr1.reverse;
+    console.log(reverseArr)
+
+
+    var arr5 = [1,2,3,4,5,6,7,8,9];
+    // arr.slice(startIndex,endIndex)返回数组片段
+    // 参数一：从哪个索引开始
+    // 参数二：到哪个索引结束；包含startIndex,不包含endIndedx
+    var res5 = arr5.slice(3,6);
+    console.log(res5)
+    </script>
+</body>
+</html>
