@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 2, 4,'ee', 4, 6, 7, 8, 9];
+        var res = []        //保证res中数据不是重复的  那么去重成功
+        var flag = false    //表示res中 没有这个数据
+    //     for (var i = 0; i < arr.length; i++) {   //遍历arr数组
+
+    //          //让res中的每一项与res中进行比较，然后添加不重复的数据
+    //         for (var j = 0; j <= res.length; j++) {  //遍历res
+    //             if (arr[i] == res[j]) {      //判断arr中的第i位是否等于res中的每一位
+    //                 flag = true;             //如果res中存在arr[i]
+    //                 break;                  //跳出res的for循环
+    //             } else {
+    //                 flag = false   // 如果没有
+                    
+    //             }
+    //         }
+    //         // 如果res中没有arr[i],那么就添加arr[i]
+    //         if (!flag) {
+    //             res.push(arr[i])
+    //             //res中有这个数据；所以不需要添加
+    //         } 
+    //     }
+    //    console.log(res)
+
+    for(var i = 0; i<arr.length;i++){
+        for(var j = 0;j<res.length;j++){
+            if(arr[i] == res[j]){
+                break
+            }else{
+                res.push(arr[i])
+            }
+        }
+    }
+    console.log(res)
+
+    //    var res = []
+    //    for(var i = 0;i<arr.length;i++){
+    //         if(res.indexOf(arr[i])===-1){
+    //             res.push(arr[i])
+    //         }
+    //    }
+    //    console.log(res)
+    </script>
+</body>
+
+</html>
