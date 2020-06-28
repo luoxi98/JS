@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [
+            {
+                name:'韩建莉',
+                arr:[
+                    {
+                        _name:'aaa',
+                        sayHi: function(){}
+                    }
+                ]
+            }
+        ]
+
+    //    console.log(arr[0].name);
+  //  console.log(arr[0]['name'])
+
+       console.log(arr[0].arr[0]._name)
+   
+       var arr = [
+                    "1",
+                    12,
+                    [
+                        {
+                        name: "gukun",
+                        age: 21,
+                        obj: {
+                            naem: "kaikai",
+                        },
+                        },
+                    ],
+                  ];
+               //  var name = arr[2][0].name = '巅峰'
+                  var name = arr[2][0]['name']= '巅峰'
+                  console.log(name)
+          //  console.log( delete arr[1])
+        //   给 arr 在尾部添加一个【字符串】
+        var last = arr[arr['length']] = '字符串'
+        console.log(last)
+
+
+
+    </script>
+</body>
+</html>
