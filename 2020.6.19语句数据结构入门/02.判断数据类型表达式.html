@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var data = 123
+        console.log(typeof data)
+        //完成需求
+    //  如何保证 变量一定是number
+     typeof data === 'number'
+    data.constructor === Number
+
+    //   如何保证 变量一定是string
+    typeof data === 'string'
+    data.constructor === String
+    //      如何保证 变量一定是Boolean
+    typeof data === 'boolean'
+    data.constructor === Boolean
+    //        如何保证 变量一定是undefined
+    typeof data === 'undefined'
+    //          如何保证 变量一定是null
+    data === null
+    //            如何保证 变量一定是数组
+     Array.isArray(data)
+     data.constructor === Array;
+     data instanceof Array;
+    //              如何保证 变量一定是对象
+    data.constructor === Object
+    //                如何保证 变量一定是函数
+    data.constructor === Function
+    typeof data === "function"
+
+    // 如何判断data 一个变量不是number类型
+       typeof data !== 'number'
+
+    //    如何让变量赋值是Number 或者是字符串
+    var res = typeof data === 'number' || typeof data === "string"
+  
+//   如何让变量 是数组或者对象
+var res12  = data instanceof Object;
+var res14 = data.constructor == Array || data.constructor == Object
+
+
+//练习题 
+var a;
+var b;
+var c;
+// 需求 a 不能是Number 并且b必须是数组 或者c是字符串
+typeof a !="number" && Array.isArray(b)||c === "string"
+    </script>
+</body>
+</html>
