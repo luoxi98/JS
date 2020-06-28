@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //     var count = 0;
+    //     var num = 0
+    //        for(var i = 0;i<9;i++ ){
+    //         //    如何统计外面的循环执行多少次
+    //         // i每执行一次 j就执行9次
+    //             num++
+    //             console.log('i',i);
+    //             for(var j = 0;j<9;j++){
+    //                 // 如何统计 里面for执行的次数
+    //                count++
+    //              //++count
+           
+    //             }
+    // }
+    // console.log(count);
+    // console.log(num)
+
+
+    // 上面的逻辑处理的数据结构  ----->二维数组
+    // 1：先取出一维数组下的数据
+    var arr = [
+        ['aa','222'],
+        ['ba','222'],
+        ['ca','222','dddd'],
+        ['da','222'],
+        ['ea','222'],
+    ]
+
+
+    // 动态获取多维数组
+    for(var i =0; i<arr.length;i++){
+            console.log(arr[i]);
+            // 如果
+            for(var j = 0;j<arr[i].length;j++){
+                    console.log(arr[i][j])
+            }
+    }
+
+    // 需求 打印数组长度为3的数据
+    // for(var i = 0;i<arr.length;i++){
+    //     if(arr[i].length == 3){
+    //         for(var j = 0; j<arr[i].length;j++){
+    //                     console.log(arr[i][j]); 
+    //                 }
+    //     }
+      
+    // }
+//1:循环执行多少次
+// 2：结果多少个；只要比执行次数少的;一定是用到了if
+    </script>
+ 
+</body>
+</html>

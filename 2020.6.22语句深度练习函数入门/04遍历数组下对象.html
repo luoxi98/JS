@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var student = [
+            {name:'liuyucai',age:21}
+        ]
+
+
+
+        // for(var i = 0;i<student.length;i++){
+        //     for(var j = 0;j<student[i].length;j++){
+        //         console.log(student[i][j])
+        //     }
+        // } //错误 对象不能用下标
+
+
+        // 获取刘玉彩 21 name age
+        // console.log(student[0])
+       for(var i = 0;i<student.length;i++) {
+              for(x in student[i]){
+            console.log(x);
+            console.log(student[i][x])
+        }
+       }
+
+       //关联数组
+     var arr=[];
+     arr["name"]="zhou";
+     console.log(arr);
+    </script>
+</body>
+</html>

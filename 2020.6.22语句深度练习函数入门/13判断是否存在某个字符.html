@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = 'asdfgkkhfdsa';
+        var newStr = 'a'
+        // 如何判断str 是否有newStr
+        // string.indexOf() 返回值为-1string中一定没有str字符
+        console.log(str.indexOf(newStr))
+        console.log(str.charAt(1))//根据索引值，从字符串中获取单个字符
+        console.log(str.charCodeAt())//返回是一个字符的编码 不写表示第一个 写索引指定的是哪一个
+        // 如果 index 是负数，或大于等于字符串的长度，则 charCodeAt() 返回 NaN。
+
+
+        // for(var i = 0;i<str.length;i++){
+        //     if(str[i]==newStr){
+        //         console.log(str[i])
+        //     }
+        // }
+    </script>
+</body>
+</html>

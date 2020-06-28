@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //for in
+        var obj = {
+            name:'yq',
+            age:19,
+            dec:'aaaaa'
+        }
+        for(x in obj){
+            console.log(x);  //x赋值为对象中的key
+            console.log(obj[x]); //对象取值 obj['name'] obj['name']...
+            
+            // x是个变量，所以使用时它就会自动转换成obj.["name"]这种形式
+
+            // x是'x ' 不是变量；取值是undefined
+            // console.log(obj.x)
+        }
+    </script>
+</body>
+</html>
