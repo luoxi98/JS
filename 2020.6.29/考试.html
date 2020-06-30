@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function f1() {
+        //     var n = 999;
+        //     nAdd = function () {   //找不到var 默认全局  nAdd是全局 但是function还是局部的 
+        //         n += 1
+        //     }
+
+        //     return function f2() {
+        //         alert(n);
+        //     }
+        // }
+        // var result = f1();
+        // result(); //999 没走nAdd里面
+        // nAdd(); //运行了nAdd 走了里面
+        // result(); //1000'
+
+
+        // var a = 9;
+
+        // function fn() {
+        //     a = 0;
+        //     return function (b) {
+        //         return b + a++;
+        //     }
+        // }
+        // var f = fn();
+        // console.log(f(5)); //5
+        // console.log(fn()(5)); // 5
+        // console.log(f(5)); //6
+        // console.log(a); // 2
+
+
+
+
+
+
+
+        // function fn(i) {
+        //     return function (n) {
+        //         console.log(n + (i++));
+        //     }
+        // }
+        // var f = fn(10); //i = 10
+        // f(20); //n 20+10
+        // fn(20)(40); //i:20 n 40+20
+        // fn(30)(50); //i 30  n 50+30
+        // f(30); //30+11
+
+
+
+        function fun(n, o) {
+            console.log(o)
+            return {
+                fun: function (m) {
+                    return fun(m, n);
+                }
+            };
+        }
+        var a = fun(0); //执行的是fun 返回的值给了a  a是个对象 还是全局的
+        a.fun(1); //fun(1) 执行的是  fun(m)  a:return里面的  //m:1 n 0  AO{n:1,o:0}
+        console.log(a.fun(1))
+        a.fun(2); //m :2 n:1 AO{n:2,o 0}
+        a.fun(3);
+        var b = fun(0)
+        b.fun(1)
+        b.fun(2)
+        b.fun(3);
+        var c = fun(0)
+        c.fun(1);
+        c.fun(2);
+        c.fun(3);
+    </script>
+</body>
+
+</html>

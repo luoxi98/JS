@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function(window){
+            var num = 0;
+            // foo是window属性；全局 foo的存储为指针
+            window.foo = function(){
+                // 全局 访问 私有的 立即执行函数 num
+                var count = 0
+                return function bar(){
+                    console.log(count++);
+                };
+            };
+        })(window);
+
+        // function foo(){
+        //     var count = 0
+        //         return function bar(){
+        //             console.log(count++);
+        //         };
+        // }
+
+        var bar = foo();
+        bar();
+        bar();
+        console.log(bar);
+
+        var c = foo();
+        c();
+        c();
+       num++  //num is not defined
+        console.log(num)
+    </script>
+</body>
+</html>

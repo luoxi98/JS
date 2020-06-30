@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // c = 10    
+        function foo() {
+
+            function bar() {
+                var c = 100
+                function a() {
+                   console.log(c)
+                     c = 10  //重新赋值 一直找var 属于bar的AO，要是一直没有var 就是暗示全局变量
+                    
+                } 
+                a()
+                console.log(c)   
+            }
+            bar()
+            // a()
+        }
+        foo()
+        console.log(c) //报错  因为不同作用域
+    </script>
+</body>
+
+</html>

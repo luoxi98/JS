@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+         c = 100 //没有变量提升 编译阶段 GO 没有 执行阶段 GO中新增
+        var a = 100;
+
+        function testResult() {
+            //声明b，并赋初始值
+            var b = 2 * a; //b 赋值  NAN
+
+            var a = 200;
+
+            var c = a / 2;
+            alert(b);
+
+            alert(c);
+
+        }
+
+        testResult()
+        // GO{
+        //     a:undefined
+        //     testResult:function
+        // }
+        // GO{
+        //     a:100
+        //     testResult:function
+        // }
+        // AO{
+        //     b:undefined
+        //     a:undefined
+        //     c:undefined
+        // }
+        // AO{
+        //     b:2*undefined = NaN
+        //     a:200
+        //     c:undefined
+        // }
+        // AO{
+        //     b:NaN
+        //     a:200
+        //     c:100
+        // }
+    </script>
+</body>
+
+</html>

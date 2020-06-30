@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var arr = [11,2,7,4,1,6,44,33,22];
+
+    // 只要是对数组操作，你要知道 你是修改原有数组还是创建一个新的数组
+
+    // 思路：改变原来数组
+    for(var i = 0;len = arr.length,i<len;i++){  //循环遍历arr中的每一项
+        for(var j = i;j<arr.length;j++){ //第一遍没走 直接走第二遍
+            // arr[j] //是一个待比较的数据
+            if(arr[i] > arr[j]){   //如果arr[i] > arr[j]
+                var tmp = arr[i]   //将arr[i]中的值放入tmp中
+                arr[i] = arr[j]    //将arr[j]中的值放入arr[i]中
+                arr[j] = tmp      //tmp中的值放入j中
+            }
+        }
+    }
+    console.log(arr)
+
+
+
+
+
+
+
+    for(var i = 0;i<arr.length;i++){
+            for(var j = 0;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    var tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp
+                }
+            }
+    }
+    </script>
+</body>
+</html>
