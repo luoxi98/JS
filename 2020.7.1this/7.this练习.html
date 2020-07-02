@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var num = 1;
+        var myObject = {
+            num: 2, //属于myObject
+            add: function () {
+                this.num = 3; //myObject.name=3这边指向的是myObject里面的num 修改了 修改的是2
+               //window调用
+                (function () {
+                    console.log(this.num); // window.num = 1
+                    this.num = 4; //window.num = 4
+                })();
+                console.log(this.num); //myObj.num = 3
+            },
+            sub: function () {
+                console.log(this.num)
+            }
+        }
+        myObject.add();  //1 3
+        console.log(myObject.num);  //3
+        console.log(num); //4
+
+        var sub1 = myObject.sub; 
+        sub1(); //4
+
+
+        // var name = 'window'
+        // var person1 = {
+        //     name: 'person1',
+        //     show1: function () {
+        //         console.log(this.name)  // persion1.name = person1 指向的是person1里的name
+        //     },
+
+        //     show3: function () {
+
+
+        //         return function () {
+        //             console.log(this.name)  // window
+        //         }
+        //     }
+        // }
+        // var person2 = {
+        //     name: 'person2'
+        // }
+
+        // person1.show1()   //person1  
+        //  person1.show1.call(person2)  //person2
+
+        //  person1.show3()()   //wiodow
+        // //  var res = person1.show3
+        // // res()
+        // person1.show3().call(person2) //person2
+        // person1.show3.call(person2)()  //window  person1.show3.call(person2)指向的是全局
+        // // var res = person1.show3.call(person2)
+        // // res()
+
+        // 第三题 
+        // var name = '周超'
+        // (function(){
+        //     var name = '雨菲'
+        //     console.log(this.name)  //周超 立即指向函数 直接指向window
+        // })()
+
+        // 第四题 this永远不会指向函数
+        // var name = '周超'
+        // function foo() {        
+        //         (function () {
+        //             var name = '雨菲'
+        //             console.log(this.name) //周超 立即指向函数 直接指向window
+        //         })()
+        // }
+        // foo()
+
+        // 第五题
+        // function foo(){
+        //     console.log(this)
+        //     return function(){
+        //         console.log(this)
+        //     }
+        // }
+        // var obj = {
+        //     say:foo
+        // }
+        //存的是 foo 函数执行的返回值
+    //    var res = obj.say()
+    //    res()
+    // obj.say()()
+
+    // 规律 嵌套函数：父函数中this 不等于 子函数this 分别按照判断
+
+
+    // 第六题
+    // (function(){
+    //     console.log(this) //window
+    //     return function(){
+    //         console.log(this) //window
+    //     }
+    // })()()
+
+    // 第七题
+    // var obj = {};
+    //    (function(){
+    //     console.log(this)  //window
+    //     return function(){
+    //         console.log(this) 
+    //     }
+    // })().call(obj)
+    
+
+    // 第八题
+    //  var obj = {};
+    //    (function(){
+    //     console.log(this)  //window
+    //     return function(){
+    //         console.log(this) 
+    //     }
+    // })().call(this)
+    
+   // 第九题
+     var obj = {};
+
+        //call触发函数
+       (function(){
+        console.log(this)  //obj
+        return function(){
+            console.log(this) 
+        }
+    }).call(obj)()
+
+    var name = '周超'
+        function fn(){
+             var name = '雨菲'
+           console.log(this.name)  //周超 立即指向函数 直接指向window
+        }
+        fn()
+    </script>
+</body>
+
+</html>

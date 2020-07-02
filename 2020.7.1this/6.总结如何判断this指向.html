@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+        1.看this在哪个作用域  除了函数就是全局  
+        在全局下一律指向window 在函数中谁调用指向谁
+        2.看函数执行
+            2.1判断哪一个函数被执行？再看方法体中this指向谁
+            2.1看看是否有call apply  bind，有----->参一是谁 this就指向谁
+            2.2 看是否是事件处理函数，是---->触发事件元素
+            2.3 调用函数是否是new  是构造函数，this指向实例的对象
+            2.4 以上都不满足 谁调用指向谁
+        */
+        var obj = {
+            name:'yufei',
+            cname:this.name1,
+            say:function(){
+                 console.log(this.name1) //谁调用指向谁
+            }
+        }
+        console.log(obj) //周超
+
+        var name1 = '周超'
+        //1：this指向 2：用的是哪一个变量的值
+      
+      //  obj.say()  //yufei
+    //    var say = obj.say;
+    //    say()  //这个函数是widow调用的  //周超
+
+
+
+        var wzx = {
+            name:'wangzexin',
+            say:function(){
+                console.log(this.name)
+            }
+        }
+        // 获取wzx下的撒野方法 并由call触发 ---->say中this指向谁，obj
+      wzx.say.call(obj)  //改变了 this的指向 函数体内其他不会改 还是指向wzx
+      wzx.say.apply(this)//指向window
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = '周超'
+        function foo(){
+            var name = '刘育才';
+            console.log(arguments)
+            console.log(this.name)
+        }
+        var wyh = {
+            name:'王宇航',
+            foo:foo
+        }
+        var fei = {
+            name:'雨菲',
+            foo:foo,
+            cname:this.name
+        }
+
+        var yuAnag = {
+            name:'虞昂',
+            foo:foo
+        }
+        foo()
+        // wyh.foo()
+        fei.foo()
+
+       //call()改变function函数中this 指向，触发函数
+      // 参一：指定this指向的对象
+    //   参二  ~参N 给调用函数 foo 传入实参   
+        foo.call(fei,'我就是我','gfgfgfgf')
+      //  wyh.foo.call(window)    //周超
+      //  wyh.foo.call(this)  //周超 将this的wyh改为 window
+
+        // apply：改变function函数中this指向 触发函数
+        // 参一：指定this 指向的对象
+        // 参二 为数组；作用：调用函数传入的实参
+        yuAnag.foo.apply(window,[1,2,4,55])
+
+        // bind：改变function函数中this指向 加上执行符 才能触发函数
+        // 参数：指定this指向的对象
+      //  yuAnag.foo.bind(window)() 
+
+
+        // 思考:call apply bind区别？
+
+
+    </script>
+</body>
+</html>

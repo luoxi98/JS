@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var point = {
+        //     x: 0,//属于point
+        //     y: 0,
+        //     moveTo: function (x, y) {
+        //         var moveX = function (x) {
+        //             console.log(this)
+        //             this.x = x; 
+        //         };
+        //         var moveY = function (y) {
+        //             this.y = y;
+        //         };
+            
+        //         moveX(x);
+        //         moveY(y);
+        //     }
+        // };
+        // point.moveTo(1, 1); 
+        // console.log(point.x); //0
+        // console.log(point.y); //0
+        // console.log(x) //1
+
+
+
+        //第四题
+        // function foo() {
+        //     console.log(this)
+        //     return function () {
+        //         console.log(this)
+        //     }
+        // }
+        // var obj = {
+        //    foo: foo(), //调用之前执行 只执行一次
+        //     bar: foo
+        // }
+        // var person = {}
+     //  foo() //foo执行 全局 window
+        // foo()() // window window 闭包返回到全局 window
+       // foo.call(obj) //foo:foo(),bar:foo 指向obj 
+       // foo().call(this) //window  指向foo中的this 
+     //    obj.foo    (); //obj中的foo()这个函数
+       // obj.bar().bind(person)()// { }  指向的person 
+
+
+        // 第五题
+        // var a = 10;
+        // var oTimer1 = setInterval(function () {
+        //     var a = 20;
+        //     console.log(this.a); // 10 this指向全局
+        //     clearInterval(oTimer1);
+        // }, 100);
+
+        //第七题
+        // var a = 10;
+        // var foo = {
+        //     a: 20,
+        //     fn: (function () {
+        //         console.log(this); // window this指向全局 
+        //         console.log(this.a); // 10  this指向全局的a
+        //     })()
+        // }
+
+        // //第八题
+        function Point(x, y) {
+            console.log(this);  // point函数
+            this.x = x;
+            this.y = y;
+            this.moveTo = function (x, y) {
+                this.x = x;
+                this.y = y;
+                console.log(this.x); //1
+                console.log(this.y);//1
+            }
+        }
+        var p1 = new Point(0, 0); 
+        var p2 = {
+            x: 0,
+            y: 0
+        }
+        /**
+        function p1(x,y){
+            p1.x = x;
+            p1.y = y;
+            p1.moveTo = function(x,y){
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+
+         * */
+        p1.moveTo(1, 1);    
+        p1.moveTo.apply(p2, [10, 10]); // 加上参数 [10,10] 将数组里面的值给p2 x=10,y = 10
+
+        console.log(x); //0
+        console.log(y);// 0
+    </script>
+</body>
+
+</html>
