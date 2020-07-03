@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 1, 1, 22, 34, 5]
+        // function foo(){
+        //     var flag = true;
+        //     var res = [];
+        //     for(var i = 0;i<arr.length;i++){
+        //         for(var j = 0;j<res.length;i++){
+        //             if(arr[i] == res[j]){
+        //                 flag = true
+        //                 break
+        //             }else{
+        //                 flag = false
+        //             }
+        //         }
+        //     }
+        //     if(!flag){
+        //         res.push(arr[i])
+        //     }
+        // }
+        // foo()
+        // console.log(res);
+
+        // function arrDuplicate(arr) {
+        //     // 封装规范：错误优先原则
+        //     // 先验证长度 再验证类型
+        //     if (!Array.isArray(arr)) {
+        //         throw new Error('TypeError:')
+        //     }
+        //     if(arguments.length>1){
+        //         throw new Error('argument.length cannot gt 1')
+        //     }
+        //     // 只有正确时候下面才会执行
+        //     var res = [];
+        //     var flag = true;
+        //     for (var i = 0; i < arr.length; i++) { 
+        //         for (var j = 0; j <= res.length; j++) { 
+        //             if (arr[i] == res[j]) {
+        //                 flag = true;
+        //                 break; 
+        //             } else {
+        //                 flag = false 
+        //             }
+        //         }
+        //         if (!flag) {
+        //             res.push(arr[i])
+                   
+        //         }
+        //     }
+        //     return res
+        // }
+        // var newArr = arrDuplicate([1, 2, 2, 3, 4, 4, 5])
+        // console.log(newArr)
+
+
+        
+        function (arr){
+            var flag = true;
+            var res = [];
+            for(var i = 0;i<arr.length;i++){
+            for(var j = 0;j<=res.length;j++){
+                if(arr[i] == res[j]){
+                    flag = true;
+                    break;
+                }else{
+                    flag = false;
+                }
+            }
+            if(!flag){
+                res.push(arr[i])
+            }
+        }
+            return res
+        }
+        var newArr = arrDuplicate([1, 2, 2, 3, 4, 4, 5])
+        console.log(newArr)
+
+    </script>
+</body>
+
+</html>
