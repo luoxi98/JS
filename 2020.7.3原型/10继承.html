@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型对象的作用：继承，
+        // 1：面向对象开发(抽象)
+
+        // 继承例子
+        var person = function (name) {
+            this.name = name
+        }
+        // 函数原型对象下的api原则上：必须指向 【构造对象】
+        person.prototype.getName = function () {
+            return this.name
+        }
+        person.prototype.setAge = function (age) {
+            this.age = age
+        }
+        var obj = {
+            name:'雨菲'
+        }
+        var zc = new person('周超');
+        var res = zc.getName();
+        zc.setAge.call(obj,21)
+        zc.setAge(21)
+        // zc的__proto__指向的 person的prototype
+        console.log(res)
+        console.log(zc)
+
+        // 继承：被继承的属性都可以被继承者所使用
+        // console.log(zc.valueOf) //zc 直接访问Object.prototype
+
+
+        // 谈谈你对 js原型的认识
+        // 原型链 继承
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,1,2,2,3,4,5,5]
+        //求arr中出现最多的元素以及出现的次数
+        // 将重复的数组进行去重 没有的 新加进去
+        var res = {};
+        var flag = true;
+        for(var i = 0;i<arr.length;i++){
+            for(var j in res){
+                if(arr[i] == j){
+                    flag = true;
+                    break;
+                }else{
+                    flag = false;
+                }
+            }
+            if(!flag){
+                res[arr[i]] =0;
+            }
+        }
+        console.log(res)
+        // 统计数组中出现了多少次
+    
+      for(var x in res){ //循环res中的key
+          for(var i = 0;i<arr.length;i++){  //循环遍历arr中的数
+                if(x == arr[i]){
+                    ++res[x]  // res[x]表示的是次数
+                }
+          }
+      }
+      console.log(res)
+    //   第三步 比较value 中的最大值
+    var max = 0; 
+    var maxKey = '';
+    for(var y in res){
+        if(max < res[y]){
+                max = res[y];
+                maxKey = y
+        }
+    }
+    console.log(maxKey,max)
+    </script>
+</body>
+</html>
