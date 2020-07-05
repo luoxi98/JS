@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Grand.prototype.LastName = 'Deng';
+
+        function Grand() {
+
+        }
+        var grand = new Grand;
+        Father.prototype = grand;
+
+        function Father() {
+            this.name = 'xuming'
+        }
+        var father = new Father();
+        Son.prototype = father;
+
+        function Son() {
+            this.hobbit = 'smoke'
+        }
+        var son = new Son()
+
+
+     
+
+    </script>
+</body>
+
+</html>
