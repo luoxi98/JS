@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>需要被删除1</h1>
+    <h1>需要被删除2</h1>
+    <h1>需要被删除3</h1>
+    <h1>需要被删除4</h1>
+    <h1>需要被删除5</h1>
+    <script>
+        var h1s = document.querySelectorAll('h1');
+        for(var i = 0;i<h1s.length;i++){
+            console.log(h1s[i]);
+            h1s[i].onclick = function(){
+               // h1s[i].remove();  //直接是5
+               this.remove(); //this指向的是外面的h1s[i] 1,2,3,4 外面还是同步的
+            }
+        }
+
+        //闭包 
+        var h1s = document.querySelectorAll('h1');
+        for(var i = 0;i<h1s.length;i++){
+            (function(){
+                var x = i
+                h1s[i].onclick = function(){
+                    h1s[x].remove()
+                }
+            })()
+        }
+
+
+
+        // var h1s1 = h1s[0]
+      
+        //     h1s1.onclick = function(){
+        //         // el.remove() 作用:remove删除某个元素
+        //         // ----->el 为被删除的元素
+        //         h1s1.remove()
+        //     }
+       
+    </script>
+</body>
+</html>
