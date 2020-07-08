@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text">
+        <input type="checkbox">
+        <button>提交</button>
+
+        <select name="" id="">
+            <option value="china">中国</option>
+            <option value="American">美国</option>
+            <option value="bangzi" selected>韩国</option>
+        </select>
+    </form>
+</body>
+<script>
+    // form 的类数组 
+    var formObject = document.querySelector('form');
+    // console.log(formObject[0].checked);
+    // console.log(formObject[1]);
+    // console.log(formObject[2]);
+    // // 设置 或者 修改 checkbox 值
+    // formObject[1].checked = true;
+    // // 获取焦点 
+    // formObject[0].focus()
+
+    // // 问题 select option 用户选择的是哪一个呢
+    var select = formObject[formObject.length-1];  //获取类数组的最后一个元素
+    for(var i =0;i<select.length;i++){
+        console.log(select[i].selected)
+        if(select[i].selected){
+            console.log(select[i]);
+            console.log(select[i].value)
+        }
+    }
+
+    // 封装方法
+    // 作用:返回select option 选择的内容
+    // 参数:select类数组
+    // var formObject = document.querySelector('form');
+
+    // function choose(obj) {
+    //     // 错误优先原则
+    //     // 验证参数类型
+    //     // 验证参数长度
+    //     if (obj.length === 0) {
+    //         throw new Error('Failed to execute "getAttribute" on "Element": 1 argument required, but only 0 present. ')
+
+    //     }
+    // }
+    // if (obj.nodeType !== 1) {
+    //     throw new Error('Failed to execute "getAttribute" on "Element": 1 argument required, but only 0 present. ')
+
+    // }
+    // var res = []
+    // var select = obj[obj.length - 1] //获取类数组最后一个元素
+    // for (var i = 0; i < select.length; i++) {
+    //     if (select[i].selected) {
+    //         res.push({
+    //             el: select[i],
+    //             value: select[i].value
+    //         })
+    //     }
+    //     return res
+    // }
+
+
+    // console.log(choose(formObject))
+</script>
+
+</html>

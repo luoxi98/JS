@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrap {
+        margin: 100px 50px;
+    }
+
+    h1 {
+        margin: 100px 50px;
+    }
+
+    .set {
+        margin-left: 100px;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <button class="red">红色</button>
+        <button class="orange">橙色</button>
+        <button class="yellow">黄色</button>
+        <button class="green">绿色</button>
+        <button class="blue">蓝色</button>
+    </div>
+
+    <h1>猜猜什么颜色</h1>
+    <button class="set">设置颜色</button>
+
+</body>
+<script>
+    var wrap = document.getElementsByClassName('wrap');
+    var h1 = document.querySelector('h1');
+    var set = document.getElementsByClassName('set')[0]
+
+    var red = document.getElementsByClassName('red')[0]
+    var orange = document.getElementsByClassName('orange')[0]
+    var yellow = document.getElementsByClassName('yellow')[0]
+    var green = document.getElementsByClassName('green')[0]
+    var blue = document.getElementsByClassName('blue')[0]
+
+    set.addEventListener("click",function(){
+        h1.style.color = set.style.value
+    },false)
+
+    var btn = document.getElementsByTagName('button')
+    for(var i = 0;i<btn.length-1;i++){
+        btn[i].addEventListener(
+            'click',
+            function() {
+                set.style.value = this.className;
+            }
+        ,false)}
+   
+
+
+
+
+    // red.addEventListener('click',function(){
+    //     set.style.value = red.className;
+    // },false)
+    // orange.addEventListener('click',function(){
+    //     set.style.value = orange.className;
+    // },false)
+    // yellow.addEventListener('click',function(){
+    //     set.style.value = yellow.className
+    // },false)
+</script>
+
+</html>
