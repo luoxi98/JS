@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 500px;
+            height: 300px;
+            margin: 10px auto;
+            position: relative;
+        }
+
+        .wrap>img {
+            width: 500px;
+            height: 300px;
+            margin: 10px auto;
+            display: none;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        #pre {
+            width: 30px;
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            text-align: center;
+            line-height: 70px;
+            position: absolute;
+            z-index: 10;
+            left: 0;
+            top: 50%;
+            transform: translate(0px, -50%);
+        }
+
+        #next {
+            width: 30px;
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            text-align: center;
+            line-height: 70px;
+            position: absolute;
+            z-index: 10;
+            right: 0;
+            top: 50%;
+            transform: translate(0px, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="show" src="./img/1.jpg" alt="">
+        <img src="./img/2.jpg" alt="">
+        <img src="./img/3.jpg" alt="">
+        <div class="cont">
+            <div id="pre">< </div> 
+            <div id="next"> >
+            </div>
+        </div>
+    </div>
+    <script>
+        // 初始化：页面显示一个图片
+        // 通过.show类名方式控制哪一个图片显示
+        //声明一个变量 index表示当前显示的元素
+        var pre = document.querySelector('#pre')
+        var next = document.querySelector('#next')
+        var imgs = document.querySelectorAll('.wrap>img')
+        console.log(imgs)
+
+        var index = 0 //表示当前显示的图片，表示一种状态
+        pre.addEventListener('click',function(){
+            // 显示之前先清空样式   点击时清空show
+            for(var i = 0;i<imgs.length;i++){
+                imgs[i].className = ''
+            }
+            --index
+            if(index<0){  //index = -1显示最后一张
+                index =imgs.length-1
+            }
+            imgs[index].className = 'show'
+        })
+        next.addEventListener('click',function(){
+            for(var i = 0;i<imgs.length;i++){
+                imgs[i].className = ''
+            }
+            ++index
+            if(index>2){
+                index = 0
+            }
+            imgs[index].className = 'show'
+        })
+
+    </script>
+</body>
+
+</html>

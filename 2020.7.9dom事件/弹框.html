@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            position: absolute;
+            /* position: relative; */
+            top: 0;
+        }
+
+        .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 100px;
+            border-radius: 20px;
+            background-color: #fff;
+            border: 1px solid blue;
+        }
+
+        .contant {
+            margin-top: 39%;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid blue;
+        }
+
+        .contant>button {
+            border: none;
+            outline: none;
+            width: 200px;
+            background-color: transparent;
+            /* border-bottom-right-radius: 20px; */
+            /* border-bottom-left-radius: 20px; */
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+    <button id="btn">点我弹窗</button>
+    <div class="wrap">
+        <div class="box">
+            <div class="contant">
+                <button class="btnn">确认</button>
+                <button class="btnn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.querySelector('#btn');
+        var wrap = document.querySelector('.wrap');
+        var contant = document.querySelectorAll('.btnn')
+        btn.addEventListener('click',function(){
+               wrap.className = 'wrap active' 
+        })
+        for(var i = 0;i<contant.length;i++){
+            contant[i].addEventListener('click',function(){
+                wrap.className = 'wrap'
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+
+    <script>
+        //ie9一下
+        var btn = document.getElementById
+        btn.onclick = function(e){
+            // 1 事件兼容性
+        }
+
+
+
+        // 2 阻止浏览器默认行为
+        // function preventDefalut(e){
+        //     var event = e || window.event;
+        //     if(event.preventDefalut){
+        //         e.preventDefalut();
+        //     }else{
+        //         //ie9以下
+        //         event.returnValue = false
+        //     }
+        // }
+        // btn.onclick = function(e){
+        //     preventDefalut(e)
+        // }
+
+        // 3 阻止事件冒泡
+        // function stopPropergation(e){
+        //     var event = window.event;
+        //     if(event.stopPropagation){
+        //         event.stopPropagation();
+        //     }else{
+        //         event.cancelBubble = true
+        //     }
+        // }
+
+        // js如何解决兼容性问题 举例子
+
+        // 4：时间监听的封装
+        function eventListener(el,event,callback,type){
+            if(el.addEventLister){
+                el.addEventLister(event,callback,type)
+            }else{
+                //ie8以下
+                el.attachEvent(event,callback);
+            }
+        }
+        eventListener(btn,'click',function(e){ //事件处理函数
+            console.log('点击事件执行了')
+        },false)
+
+
+        // 删除事件句柄的兼容性处理
+        function removeEvent(el,eventName,eventFun){
+            if(el.removeEventListener){
+                el.removeEventListener(eventName,eventFun)
+                }else{
+                     el.detachEvent(eventName,eventFun)
+                }
+        }
+    </script>
+</body>
+</html>
