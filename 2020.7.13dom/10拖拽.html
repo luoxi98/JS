@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background-color: red;
+        }
+    </style>
+    <div class="box">
+
+    </div>
+
+    <script>
+        var box = document.querySelector('.box');
+        box.onclick = function (event) {
+            // console.log('点击了')
+            var x = event.offsetX;
+            var y = event.offsetY
+            // 通过获取鼠标移动的距离，将距离赋值给元素的left top属性；实现；元素的移动效果
+            document.onmousemove = function (e) {
+                console.log(e.clientX);
+                box.style.left = e.clientX -x+ 'px';
+                box.style.top = e.clientY-y + 'px';
+                //坑1 默认body的8px 导致鼠标不在元素上
+
+                // 坑2  在左上角
+                // 需求
+            };
+        };
+
+
+        //需求: 在哪里点击的就开始在哪里拖动呢？
+    </script>
+</body>
+
+</html>

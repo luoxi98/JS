@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .box {
+            height: 100px;
+            background-color: red;
+            overflow: scroll;
+
+        }
+
+        p {
+            height: 150px;
+        }
+
+        button{
+            display: none;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
+    </style>
+    <!-- <div class="box">
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+        <p>我是内容</p>
+    </div> -->
+    <button>返回顶部</button>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+    <p>我是内容</p>
+
+    <script>
+        //没有动画的返回顶部
+
+        // 注意：滚动条事件可以给任意具有滚动条的元素添加
+        // var box = document.querySelector('.box');
+        // box.onscroll = function(){
+        //     console.log('滚动了')
+        // }
+
+      
+        //scrollTo() 指定滚动条滚动到某个位置
+        // 参数 对象 top纵向滚动 left 横向滚动
+        // window.scrollTo({
+        //     top:200,
+        // })
+        var btn = document.querySelector('button')
+          //如何初始化滚动条滚动到某一个位置
+        window.onscroll = function () {
+            //滚动条距离顶部的高度
+            var top = document.documentElement.scrollTop;
+            //页面高度
+            var H = innerHeight;
+            // scrollHeight 获取滚动条高度
+                         //scrollHeight = offsetHeight 获取滚动条元素的高度
+            // 也是页面的总高度
+            var pageh = document.documentElement.scrollHeight || document.body.scrollHeight;
+            console.log(pageh)
+            if(top + H>pageh){
+                btn.style.display = 'block'
+            }else{
+                btn.style.display = ''
+            }
+
+        }
+
+        // //点击按钮 闪现返回顶部
+        // btn.onclick = function(){
+        //     //指定滚动条 返回顶部
+        //     window.scrollTo({
+        //         top:0
+        //     })
+        // }
+
+        btn.onclick = function(){
+            //1:获取当前滚动条位置
+            var top = document.documentElement.scrollTop;
+            // 2.实现js动画效果
+            var timer = setInterval(() => {
+                top-=10 //每隔16.7ms 自减10
+                window.scrollTo({
+                    top:top  //滚动条每次滚动的值是一个动态的值 --->动画效果
+                });
+                if(top<=0){
+                    clearInterval(timer)
+                }
+
+            }, 16.7);
+        }
+    </script>
+</body>
+
+</html>
