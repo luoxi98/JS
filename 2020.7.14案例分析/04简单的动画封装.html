@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        //$animate 实现动画
+        //el 给哪一个元素
+        //styleus  css的动画样式的动画
+        //time 时间
+
+        var box = document.querySelector('.box');
+         $animate(box,{opacity:0.5},0.5);
+
+        function $animate(el, styleus, time) { //box 透明度 时间
+            for (var x in styleus) {  //循环遍历透明度
+                (function (n) {
+                      var timer = setInterval(function(){
+                          //null获取的是el中所有属性
+                        var a = el.style[n]-=getComputedStyle(el,null)['opacity'];
+                        console.log(a);
+                        if(n <= style[n]){
+                            el.style[n] = 0.3;
+                            clearInterval(timer)
+                        }
+                      },72)
+                })(i)
+
+                }
+
+            }
+        
+    </script>
+</body>
+
+</html>

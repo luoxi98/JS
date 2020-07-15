@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="list">
+        <form action="">
+            <select name="" id="province">
+                <option value="-1">请选择省份</option>
+            </select>
+            <select id="city">
+                <option value="0">请选择城市</option>
+            </select>
+        </form>
+    </div>
+</body>
+<script src="area.js"></script>
+<script>
+    var province = document.querySelector('#province');
+    var city = document.querySelector('#city')
+
+    //循环所有省份
+    for (var i in area) {
+        var Province = document.createElement('option');
+        Province.innerHTML = i;
+        province.appendChild(Province)
+
+    }
+    province.onchange = function(){
+        //获取当前点击的子元素的索引值
+        var index = province.selectedIndex;
+        console.log(index);
+        var i = 0;
+        for(var x in area){ //循环整个area数组 点一下就循环整个
+            ++i 
+          //  console.log(i) 点一下就循环整个
+            if(i == index ){
+                var Provience_city = area[x][0]//拿到所有的市
+                city.length = 1;
+               // console.log(area[x]) 所有市的一个数组
+                // console.log(Provience_city)
+                for(j in Provience_city){//遍历到页面中
+                    var Provience_option = document.createElement('option');
+                    Provience_option.innerHTML = j;
+                    city.appendChild(Provience_option)
+
+                }
+            }
+        }
+
+
+    }
+</script>
+
+</html>

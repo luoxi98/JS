@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content,
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            padding: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: greenyellow;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .control {
+            width: 45px;
+            position: fixed;
+            top: 50%;
+            left: 50px;
+            transform: translate(0, -50%);
+            background-color: #ccc;
+        }
+
+        .control-item {
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+            border: 1px solid black
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box yellow"></div>
+        <div class="box blue"></div>
+    </div>
+
+    <div class="control">
+        <button class="control-item">1</button>
+        <button class="control-item">2</button>
+        <button class="control-item">3</button>
+        <button class="control-item">4</button>
+    </div>
+    <script>
+        //1:tab 切换
+        var btn = document.querySelectorAll('.control-item');
+        var box = document.querySelectorAll('.box');
+
+        //初始化btn样式
+        btn[0].style.color = '#fff';
+        btn[0].style.backgroundColor = '#000'
+        for (var i = 0; i < btn.length; i++) {
+            (function (i) {
+                var x = i;
+                btn[x].onclick = function () {
+                    console.log(btn[x]);
+                    //1:完成点击按钮自身样式
+                    for (var i = 0; i < btn.length; i++) {
+                        btn[i].style.color = '';
+                        btn[i].style.backgroundColor = '';
+                    }
+                    btn[x].style.color = '#fff';
+                    btn[x].style.backgroundColor = '#000'
+
+                    //2 点击按钮 指定滚动条高度
+                    //-----> 问题：滚动条滚动多少
+
+                    //2.1知道当前点击是哪一个元素
+                    //2.2求当前点击元素之前 元素之和
+                    var top = 0;
+                    for (var j = 0; j < x; j++) {
+                        top += box[j].offsetHeight;
+                    }
+                    console.log(top)
+                    //2.3 指定 滚动条 滚动到 top 位置
+                    window.scrollTo({
+                        top: top
+                    })
+                };
+            })(i)
+        }
+        //2：滚动联动
+        //监听滚动条事件
+
+        //问题：box滚动到第几个元素
+        //---->滚动到高度 元素高度 球的当前滚动到哪一个元素
+        //根据box 滚动到第几个元素求btn到哪一个元素
+        window.onscroll = function (e) {
+            //1：滚动条滚动的高度
+            var h = document.documentElement.scrollTop || document.body.scrollTop;
+
+            //3：当前滚动到第几个元素
+            //滚动条滚动的高度/视图窗口的高度
+            
+            var count = Math.floor(h / (innerHeight-10));
+
+            for (var i = 0; i < btn.length; i++) {
+                btn[i].style.color = '';
+                btn[i].style.backgroundColor = '';
+            }
+            btn[count].style.color = '#fff';
+            btn[count].style.backgroundColor = '#000';
+            
+
+        }
+    </script>
+</body>
+
+</html>
