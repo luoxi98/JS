@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+</style>
+<body>
+    <div class="box">
+
+    </div>
+    <button>点一下</button>
+    <script src="todos.js"></script>
+    <script>
+        var box = document.querySelector('.box');
+        var btn = document.querySelector('button');
+        btn.onmousedown = function(){
+                hide(box)
+        }
+        btn.onmouseup = function(){
+            show(box)
+        }
+
+       //渐入式隐藏某一个html元素
+
+        function hide(el){
+            var val = 1; 
+            el.style.opacity = val; //将透明度设为val
+            var timer = setInterval(() => {
+                val -= 0.1;  //每隔30ms - 0.1
+                if(val<=0){
+                    el.style.opacity = 0; //让它透明度变为0
+                   // el.style.dispaly = 'none'; 
+                    clearInterval(timer); //清除定时器
+                    return;
+                }
+                el.style.opacity = val; 
+            }, 30);
+            return el;
+        }
+
+        //show 显示 hide的相反方法
+   
+        function show(el){
+            el.style.dispaly = 'block';
+            var val = 0
+            el.style.opacity = val;
+            var timer = setInterval(() => {
+                val += 0.1;  //每隔30ms - 0.1
+                if(val>=1){
+                    el.style.opacity = 1; //让它透明度变为0
+                    //el.style.dispaly = 'block'; 
+                    clearInterval(timer); //清除定时器
+                    return;
+                }
+                el.style.opacity = val; 
+            }, 30);
+            return el;
+
+        }
+    </script>
+</body>
+</html>

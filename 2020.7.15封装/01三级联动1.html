@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <select name="" id="province">
+            <option value="">请选择</option>
+        </select>
+        <select name="" id="city">
+            <option value="">请选择</option>
+        </select>
+        <select name="" id="Area">
+            <option value="">请选择</option>
+        </select>
+        <select name="" id="Prefecture">
+            <option value="">请选择</option>
+        </select>
+    </form>
+</body>
+</html>
+<script src="./area.js"></script>
+<script>
+    var province = document.querySelector('#province');
+    var city = document.querySelector('#city');
+    var option = document.querySelector('#Area');
+    var Prefecture = document.querySelector('#Prefecture');
+    for (var i in area) {
+        // console.log(Province_City);
+        var Province = document.createElement('option');
+        Province.innerHTML = i
+        province.appendChild(Province);
+    }
+    var Save_the_city;
+    var Save_the_Area;
+    province.onchange = function () {
+        var index = province.selectedIndex; //获取当前点击的子元素的索引
+        var i = 0; //计数器
+        for (var x in area) { //遍历整个area数组 
+            ++i; //这里的i用来记录每一次循环
+            // PS: 遍历时候 Object和用户的索引值是对应的
+            if (i == index) {  //这里判断用户点击的索引值和 所循环的Object一致的时候,吧obj里面的内容输出到页面上
+                var Province_City = area[x][0];
+                Save_the_city = area[x][0];  //这里的XM用于保存选择省下的所有市 
+                //方便保存使用 
+                city.length = 1 //清空默认所带的列表项
+                option.length = 1
+                for (var c in Province_City) { //遍历输出到页面
+                    var Province_Options = document.createElement('option');
+                    Province_Options.innerHTML = c
+                    city.appendChild(Province_Options);
+                }
+            }
+        }
+    }
+    city.onchange = function () {
+        var index = city.selectedIndex; //获取城市的索引值
+        var n = 0;
+        for (var x in Save_the_city) { //循环遍历所有的市
+            ++n
+            if (n == index) {
+                var city_city = Save_the_city[x]
+                option.length = 1
+                Save_the_Area = Save_the_city[x]
+                for (var q = 0; q < city_city.length; q++) {
+                    for (var t in city_city[q]) {
+                        var city_Options = document.createElement('option');
+                        city_Options.innerHTML = t
+                        option.appendChild(city_Options);
+                    }
+                }
+            }
+        }
+    }
+    option.onchange = function () {
+        var indexop = Area.selectedIndex;
+        for (var z = 0; z <= Save_the_Area.length; z++) {
+            if (z == (indexop - 1)) {
+                for (var x in Save_the_Area[z]) {
+                    var street = Save_the_Area[z][x];
+                    var Array_street = street.split('、');
+                    console.log(Array_street);
+                    Prefecture.length = 1
+                    for (var p = 0; p < Array_street.length; p++) {
+                        var Area_Options = document.createElement('option');
+                        Area_Options.innerHTML = Array_street[p]
+                        Prefecture.appendChild(Area_Options);
+                    }
+                }
+            }
+        }
+    }
+</script>

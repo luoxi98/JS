@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style: none;
+        width: 2000px;
+        left: 0;
+        top: 0;
+        position: absolute;
+    }
+
+    img {
+        vertical-align: top;
+    }
+
+    .box {
+        width: 500px;
+        height: 300px;
+        margin: 100px auto;
+        background-color: pink;
+        border: 1px solid red;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box img {
+        width: 500px;
+        height: 300px;
+
+
+    }
+
+    .box ul li {
+        float: left;
+        /* display: none; */
+    }
+
+    .show {
+        display: block !important;
+    }
+
+    #pre {
+        width: 30px;
+        height: 70px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        text-align: center;
+        line-height: 70px;
+        position: absolute;
+        z-index: 10;
+        left: 0;
+        top: 50%;
+        transform: translate(0px, -50%);
+    }
+
+    #next {
+        width: 30px;
+        height: 70px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        text-align: center;
+        line-height: 70px;
+        position: absolute;
+        z-index: 10;
+        right: 0;
+        top: 50%;
+        transform: translate(0px, -50%);
+    }
+</style>
+
+<body>
+    <div class="box" id="screen">
+        <ul>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/1.jpg" alt=""></li>
+        </ul>
+        <div class="cont">
+            <div id="pre">
+                < </div> <div id="next"> >
+            </div>
+        </div>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        var pre = document.querySelector('#pre');
+        var next = document.querySelector('#next');
+        var imgs = document.querySelectorAll('li');
+        var index = 0 //表示当前显示的图片，表示一种状态
+        pre.addEventListener('click', function () {
+            // 显示之前先清空样式   点击时清空show
+
+
+        })
+        next.addEventListener('click', function () {
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.left = index * innerWidth + 'px'
+            }
+            ++index;
+            if (index > 2) {
+                index = 0
+            }
+
+
+        })
+        var current = 0;
+
+        function f1() {
+            var ulObj = document.querySelector('ul'); //获取ul
+            current -= 10;
+            if(current==-500||current==-1000||current==-1500){
+                clearInterval(timer);
+                setTimeout(function(){
+                      timer = setInterval(f1,50);
+                 },200)
+                
+              
+                
+            }
+            if (current <=-1500) {
+                ulObj.style.left = 0 + "px";
+                current = 0;
+            } else {
+                ulObj.style.left = current + "px";
+            }
+         
+
+        }
+        var timer = setInterval(f1, 50)
+       
+        
+        box.onmouseover = function () {
+            clearInterval(timer)
+        }
+        box.onmouseout = function () {
+            clearInterval(timer)
+            timer = setInterval(f1, 50)
+        }
+        
+    </script>
+</body>
+
+</html>

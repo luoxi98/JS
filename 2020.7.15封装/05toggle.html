@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+</style>
+
+<body>
+    <button>toggle</button>
+    <div class="box"></div>
+</body>
+
+</html>
+<script>
+    // 显示隐藏不确定 一定是display控制的 
+    var box = document.querySelector('.box');
+    var btn = document.querySelector('button');
+    btn.onclick = function () {
+        toggle(box)
+    }
+    function toggle(el) {
+        var c = getComputedStyle(el, null)['display'];
+        var qq = 0
+        if (c == 'block') {
+            qq = 1
+            var timer = setInterval(function () {
+                qq -= 0.1
+                el.style.opacity = qq;
+                if (qq <= 0) {
+                    el.style.display = 'none';
+                    clearInterval(timer);
+                    return
+                }
+            }, 30)
+        } else {
+            qq = 0
+            var timer = setInterval(function () {
+                qq += 0.1
+                el.style.opacity = qq;
+                el.style.display = 'block';
+                if (qq >= 1) {
+                    clearInterval(timer);
+                    return
+                }
+            }, 30)
+        }
+        return el
+    }
+</script>
