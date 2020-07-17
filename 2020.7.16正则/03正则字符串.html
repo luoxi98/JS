@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //正则字符 分为原义文本字符 特殊字符(元字符)
+        //原义文本字符:原本意义的文本字符
+        var reg1 = /[0123456789]/g //匹配0-9字符串长度为1，可以得到多个结果
+        var reg2 = /[0123456789]{3}/g  //匹配0-9 多个结果 每个字符长度都是3
+        var reg3 = /[0123456789]{1,5}/g //{}设置匹配长度
+        //连续3个都是数据并且没有被匹配到
+        console.log('d2f34324'.match(reg2));
+        console.log('d2f34f324w'.match(reg3));
+        //元字符
+
+        
+    </script>
+</body>
+</html>

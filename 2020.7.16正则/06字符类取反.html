@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var reg = /[^0-9]/g //除了0-9 其他都匹配
+        var str = 'asdfghjkzxcvbnmasderftgyhj23456';
+        console.log(str.match(reg));
+        var reg = /[^a-zA-Z]/g
+        var reg3 = /[^0-9a-zA-Z_]/g;
+        var str2 = '我是中国人,我爱国的12345asdf_';
+        console.log(str2.match(reg3))
+
+        //边界类
+        var str8 = 'this is a wonderfun girl '
+        var reg7 = /\bis\b/g;
+        console.log(str8.match(reg7))
+
+        var str9 = '小韩怎么这么棒 我是这么是觉得的'
+        var reg8 = /\B是\B/g
+        console.log(str9.match(reg8))
+    </script>
+</body>
+</html>

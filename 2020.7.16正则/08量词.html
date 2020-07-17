@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //量词 设置 匹配字符的长度
+        //{m,n} 匹配字符长度 最小m 最大n
+        //{n,} 匹配字符长度大于等于n
+        //{n} 匹配字符长度为n
+
+        //.任意字符 \.点
+        var reg = /.{3}/ //验证 长度为3 任意字符
+        var str = 'ghgggj'
+        console.log(str.match(reg));
+
+
+        //只能为数组 不限制长度
+        var reg1 = /^[0-9]{1,}$/;
+        var str = '2345678dfg'
+        var str1 = '2345'
+        console.log(str1.match(reg1));
+
+        //验证某一个字符是否符合正则
+        //regxp.test(str)验证某一个字符是否符合 正则表达式；返回 true false
+        console.log(reg.test(str1));
+
+        //匹配 首部或者尾部为空
+        var reg = /^\s{1,}|\s{1,}$/g
+        var str3 = '       dddd    ddd     '
+        console.log(str3.replace(reg,'-'));
+
+        //需求：去除一个字符串中所有空格
+        //	\s匹配任意的空白符
+        var reg4 = /\s{1,}/g
+        console.log(str3.replace(reg,'-'));
+
+        
+
+    </script>
+    
+</body>
+</html>

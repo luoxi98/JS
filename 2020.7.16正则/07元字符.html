@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var reg = /[0-9]/g
+        var reg = /\d/g //匹配0-9字符
+        var reg = /[0-9a-zA-Z_]/g  //数字字母下划线
+        var reg = /[\w]/g //匹配数字字母下划线
+
+        //^ 在[]里面是取反   在[]外是开头
+        var reg1 = /^\d[a-zA-Z]$/g ///^\d+[a-zA-Z]$/g  字符长度为2 仅能匹配字符长度为2
+        var str = '3d'
+        var str = 'asdfghjxcvbn'
+        console.log(str.match(reg1));
+
+        //匹配 必须以1开头 结尾无所谓 长度不限
+
+        var reg3 = /^[1][^\s]{1,}/g
+        var str3='1sdfghjdfghn44';
+        console.log(str3.match(reg3));
+
+        //手机号 仅开头为1的11为数的数字 结尾是长度为10的数字
+        var reg5 = /^1\d{10}$/g; //开头 1 结尾数字；2个字符长度 
+        // 第一个字符长度1 第二个字符长度10；
+        var num = '12345667897';
+        console.log(num.match(reg5));
+        console.log('112345'.match(reg5))//因为第二个总府长度不满足
+    </script>
+</body>
+</html>

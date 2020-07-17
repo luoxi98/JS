@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .wraper{
+            width: 400px;
+            height: 200px;
+            display: flex;
+            background-color:tomato;
+            justify-content: space-around;
+            align-items: center;
+        }
+       
+     .wraper>div{
+          width: 100px;
+          height: 100px;
+          background-color: #fff;  
+          font-size: 50px;
+          line-height: 100px;
+          text-align: center;
+          font-weight: 700;
+      }
+    </style>
+     <h1>限时秒杀</h1>
+    <div class="wraper">
+        <div id="m">10</div>
+        <div id="s">00</div>
+        <div id="ms">00</div>
+    </div>
+    <button>点击秒杀</button>
+    <script>
+      var btn = document.querySelector('button');
+      var m = document.querySelector('#m')
+      var s = document.querySelector('#s');
+      var ms = document.querySelector('#ms')
+        btn.onclick = function(){
+            var time = 600000; //10min
+            var now =99;
+            var timer = setInterval(function(){
+                 data = new Date(time);  //
+                    --now;
+                if(data.getMinutes() < 10){
+                    m.innerHTML = '0'+data.getMinutes()
+                }else{
+                    m.innerHTML = data.getMinutes()
+                }
+                if(data.getSeconds() >=10){
+                    s.innerHTML = data.getSeconds();
+                }else{
+                    s.innerHTML = '0'+data.getSeconds();
+                }
+                ms.innerHTML = now;
+                    if(now==0){
+                        now = 99;
+                        time =time-1000
+                    }
+                    if(time<0){
+                        clearInterval(timer)
+                    }
+
+            },10)
+        }
+    </script>
+</body>
+</html>
