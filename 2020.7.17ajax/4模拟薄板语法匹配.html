@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{msg}}</h1>
+    <div>{{name}}</div>
+    <script>
+        var data = {
+            msg:'我是内容',
+            name:'小小小'
+        }
+        var h1 = document.querySelector('h1');
+        var div = document.querySelector('div');
+    //     var h1val = h1.innerHTML;
+    //     var divVal = div.innerHTML;
+    //   h1.innerHTML =  h1val.replace(/\{\{(\w+)\}\}/,function(a,b,c){
+    //         console.log(a);
+    //         console.log(RegExp.$1)
+    //         return data(RegExp.$1)
+    //     })
+
+
+
+        // function replace(el){
+        //     var str = el.innerHTML;
+        //     el.innerHTML = str.replace(/\{\{(\w+)\}\}/,function(a,b,c){
+        //         for(var x in data){
+        //             if(x === RegExp.$1){  //$1对应的a
+        //                 return data[x]
+        //             }
+        //         }
+        //     })
+        // }
+        // replace(h1);
+        // replace(div)
+
+        function replace(data){
+            var template = document.body.innerHTML;
+            console.log(template)
+            var res = template.replace(/\{\{(\w+)\}\}/,function(a,b,c){ //对整个body标签去匹配字符串
+                console.log(a)
+                var reg = /\w+/; //匹配所有的字符
+                var newVal = a.match(reg)[0] //a ---》{{w+}}   w+ [0]
+                console.log(a.match(reg)[0]); //正则匹配规则  msg
+                for(var x in data){
+                    if(x === newVal){ //msg == msg
+                        return data[x]  // 替换a 
+                    }
+                }
+            });
+           console.log(res)
+            document.body.innerHTML = res
+        }
+        replace(data)
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    form{
+        width: 300px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        padding: 20px 15px;
+        box-shadow: 5px 5px  0.5;
+    
+    }
+    .form-control{
+        width: 100%;
+        padding: 10px 5px;
+    }
+    .form-control label{
+        font-size: 14px;
+        color: #36384e;
+    }
+    .form-control input{
+        width: 80%;
+        height: 30px;
+        outline: none;
+        border: 1px solid #cccccc;
+    }
+    .form-control p{
+        font-size: 12px;
+        text-align: left;
+        color: red;
+        padding-top: 5px;
+        padding-left: 40px;
+        display: none;
+    }
+    .login{
+        width: 85%;
+        margin: 0 auto;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background-color: tomato;
+        outline: none;
+        appearance: none;
+        border-radius: 50px;
+        border: none;
+        margin-top: 20px;
+    }
+</style>
+<body>
+    <form action="">
+        <div class="form-control">
+            <label for="">用户名:</label>
+            <input type="text" name="username" id="username">
+            <p class="userWarn">请输入6-16位的数字或字符</p>
+        </div>
+        <div class="form-control">
+            <label for="">密&nbsp&nbsp&nbsp码:</label>
+            <input type="password" name="password" id="password">
+            <p class="passWarn">请输入8-12位开头大写的数字字符下划线</p>
+        </div>
+        <div>
+            <button class="login">登录</button>
+        </div>
+    </form>
+    <script>
+        var btn = document.querySelector('.login')
+        var username = document.querySelector('#username');
+        var password = document.querySelector('#password');
+        var userWarn = document.querySelector('.userWarn')
+        var passWarn = document.querySelector('.passWarn')
+        btn.onclick = function(e){
+            e.preventDefault();
+            var user = username.value;
+            var pass = password.value;
+            console.log(user,pass)
+            var reg = /^[0-9a-zA-Z]{6,16}$/;
+            var reg1 = /^[A-Z]\w{7,11}$/; //贪婪匹配 能匹配9 不会匹配8
+            console.log()
+            if(!reg.test(user)){
+                userWarn.style.display = 'block' 
+            }else{
+                userWarn.style.display = 'none' 
+            }
+            if(!reg1.test(pass)){
+                passWarn.style.display = 'block'
+            }else{
+                passWarn.style.display = 'none'
+            }
+            if(reg.test(user) &&reg1.test(pass) ){
+                userWarn.style.display = 'none' 
+                passWarn.style.display = 'none'
+                alert('✌ 进来咯')
+            }
+        }
+    </script>
+</body>
+</html>
